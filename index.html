@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kei Kataoka | Official Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --primary: #f59e0b;
+      --primary-glow: rgba(245, 158, 11, 0.4);
+      --accent-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .logo {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.15), transparent 50%);
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      font-weight: 900;
+    }
+
+    .hero-text h1 span {
+      color: var(--primary);
+      text-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px var(--primary-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--text-main);
+    }
+
+    /* Photo Frame */
+    .photo-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-frame {
+      width: 320px;
+      height: 380px;
+      border-radius: 24px;
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-frame:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .photo-placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .photo-placeholder-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Generic Section Style */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    /* About Section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Skills / Stats Bar */
+    .skills-section {
+      background: rgba(30, 41, 59, 0.4);
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      padding: 3rem 2rem;
+    }
+
+    .skill-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .skill-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #fbbf24);
+      border-radius: 10px;
+    }
+
+    /* Pizza & Football Showcase */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .showcase-card {
+      background: var(--bg-card);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .showcase-card.football {
+      border-left: 4px solid var(--primary);
+    }
+
+    .showcase-card.pizza {
+      border-left: 4px solid var(--accent-red);
+    }
+
+    .showcase-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .showcase-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .showcase-list li {
+      padding: 0.5rem 0;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-container, .showcase-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      .hero-btns {
+        justify-content: center;
+      }
+      .photo-frame {
+        width: 260px;
+        height: 320px;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Kei Kataoka ⚽</div>
+      <ul class="nav-links">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#stats">Player Stats</a></li>
+        <li><a href="#favorites">Favorites</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="badge">Future Football Legend ⚽</span>
+        <h1>Hi, I'm <span>Kei Kataoka</span></h1>
+        <p>I am 7 years old. I love playing football, scoring epic goals, and enjoying delicious pizza with family and friends!</p>
+        <div class="hero-btns">
+          <a href="#about" class="btn btn-primary">Know My Story</a>
+          <a href="#stats" class="btn btn-secondary">View Stats</a>
+        </div>
+      </div>
+      
+      <!-- Photo Section -->
+      <div class="photo-wrapper">
+        <div class="photo-frame">
+          <!-- 
+            TO ADD YOUR PHOTO: 
+            Replace 'my-photo.jpg' below with your actual image path!
+          -->
+          <img src="my-photo.jpg" alt="Kei Kataoka" onerror="this.style.display='none'">
+          
+          <div class="photo-placeholder-icon">📸</div>
+          <div class="photo-placeholder-text">
+            <strong>Kei's Photo Space</strong><br>
+            Add <code>my-photo.jpg</code> to this folder to see your picture here!
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-title">
+      <h2>All About Me 🌟</h2>
+      <p>Getting to know 7-year-old superstar Kei Kataoka</p>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>High Energy</h3>
+        <p>Whether I'm running on the football field or playing with friends, I bring 100% energy every single day.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚽</div>
+        <h3>Football Fanatic</h3>
+        <p>Practicing my kicks, passing to my teammates, and scoring awesome goals are my absolute favorite things to do.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🍕</div>
+        <h3>Pizza Expert</h3>
+        <p>No day is complete without a warm slice of pizza. Extra cheese makes it even better!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats & Skills Section -->
+  <section id="stats">
+    <div class="section-title">
+      <h2>Player Stats & Skills 🏆</h2>
+      <p>My attributes on and off the field</p>
+    </div>
+    <div class="skills-section">
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Speed & Running 🏃‍♂️</span>
+          <span>95%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 95%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Kicking & Shooting Power ⚽</span>
+          <span>90%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 90%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Pizza Eating Speed 🍕</span>
+          <span>100%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-info">
+          <span>Team Spirit & Friendship 🤝</span>
+          <span>98%</span>
+        </div>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width: 98%;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Favorites Showcase Section -->
+  <section id="favorites">
+    <div class="section-title">
+      <h2>My Top Favorites 🍕⚽</h2>
+      <p>The two things that make life awesome</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-card football">
+        <h3>Football Mode ⚽</h3>
+        <p>My dream is to keep practicing and playing great matches!</p>
+        <ul class="showcase-list">
+          <li>✨ Favorite Spot: Playing on the field</li>
+          <li>✨ Goal: Scoring super kicks</li>
+          <li>✨ Best Part: Celebrating goals with my team</li>
+        </ul>
+      </div>
+
+      <div class="showcase-card pizza">
+        <h3>Pizza Time 🍕</h3>
+        <p>The best post-match victory meal ever created.</p>
+        <ul class="showcase-list">
+          <li>✨ Favorite Toppings: Gooey Mozzarella & Pepperoni</li>
+          <li>✨ Best Crust: Crispy & Warm</li>
+          <li>✨ Happiness Level: 100/100</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Kei Kataoka. Created for the ultimate 7-year-old football & pizza champ!</p>
+  </footer>
+
+</body>
+</html>
